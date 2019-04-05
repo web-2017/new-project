@@ -8,5 +8,5 @@ $(document).ready(function () {
       $('#preloader').fadeOut('slow', function () {});
     }, 2000);
 
-  });
+  }); 
 });
