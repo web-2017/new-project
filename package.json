@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
-    "jquery-countdown": "^2.2.0"
+    "jquery-countdown": "^2.2.0",
+    "npm": "^6.9.0"
   }
 }
