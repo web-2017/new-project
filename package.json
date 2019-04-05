@@ -43,5 +43,8 @@
     "webpack-cli": "^3.1.0",
     "webpack-stream": "^5.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-countdown": "^2.2.0"
+  }
 }

@@ -1,10 +1,12 @@
 // Node Packages
 const gulp = require('gulp');
+
 const pump = require('pump');
 const del = require('del');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const browserSync = require('browser-sync').create();
+
 const vinylNamed = require('vinyl-named');
 const through2 = require('through2');
 const gulpZip = require('gulp-zip');
@@ -202,7 +204,7 @@ const genericTask = (mode, context = 'building') => {
   let modeName;
 
   if (mode === 'development') {
-    port = '3000';
+    port = '3030';
     modeName = 'Development Mode';
   } else if (mode === 'production') {
     port = '8000';

@@ -6,10 +6,13 @@
 }
 
 .counter {
+
   &_wrap {
     margin-bottom: 140px;
+    display: flex;
+    justify-content: center;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       margin-bottom: 80px;
     }
   }
@@ -18,22 +21,30 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
+    justify-content: center;
   }
 
   &_li {
     display: inline-block;
-    font-size: 2.2em;
+    font-size: 1.7em;
     font-weight: bold;
-    padding: 20px;
-    box-shadow: border-box;
+    padding: 5px 10px;
+    text-align: center;
+    box-sizing: border-box;
     background: #ffffff;
     border-right: 1px solid #ccc;
+    margin: 0;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       font-size: 1.5em;
       padding: 5px;
       border-right: 0px solid #ccc;
       border-bottom: 1px solid #ccc;
+
+      &_mobile {
+        display: none;
+      }
     }
 
     &:last-child {
@@ -43,14 +54,15 @@
 
   &_count,
   &_sub {
-    display: block;
+    text-align: center;
+    display: inline-block;
   }
 
   &_sub {
     font-size: 12px;
     text-transform: uppercase;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       font-size: 10px;
     }
   }
@@ -62,15 +74,17 @@
     font-size: 64px;
     color: #ffe3e3;
     padding-bottom: 70px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       font-size: 2em;
     }
   }
 
   &_h1,
   &_h3 {
-    font-weight: bold;
     margin: 0;
   }
 
@@ -79,7 +93,7 @@
     font-size: 32px;
     padding-bottom: 130px;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       font-size: 1.3em;
       padding-bottom: 80px;
       line-height: 2;
@@ -96,13 +110,13 @@
     background: #fff;
     border-radius: 2px;
 
-    @media screen and (max-width: 600px) {
+    @include for-phone-only {
       padding: 20px;
     }
 
     .col-auto,
     .bg-green {
-      @media screen and (max-width: 600px) {
+      @include for-phone-only {
         width: 100%;
       }
     }
@@ -112,8 +126,24 @@
 //footer
 .footer {
   color: #ffffff;
+  margin-bottom: 15px;
 
-  @media screen and (max-width: 600px) {
+  @include for-phone-only {
     font-size: 12px;
   }
+}
+
+.counter_li {
+  color: $text;
+}
+
+
+.green {
+  color: $green;
+}
+
+.bg-green {
+  background: $green;
+  color: #fff;
+  outline: none;
 }
