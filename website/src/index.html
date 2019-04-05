@@ -2,32 +2,99 @@
 
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>The HTML5 Herald</title>
-  <link rel="stylesheet" href="./css/styles.css">
-  <script>
-    // Picture element HTML5 shiv
-    document.createElement( "picture" );
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" 
-    integrity="sha256-iT+n/otuaeKCgxnASny7bxKeqCDbaV1M7VdX1ZRQtqg=" 
-    crossorigin="anonymous" async></script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title>404 Page Error</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script>
+      // Picture element HTML5 shiv
+      document.createElement("picture");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js"
+      integrity="sha256-iT+n/otuaeKCgxnASny7bxKeqCDbaV1M7VdX1ZRQtqg=" crossorigin="anonymous" async></script>
+  </head>
 
-<body>
-  <img src="./img/red-gulp.svg" />
-  <h1>Automate Development With Gulp</h1>
-  <p>Check it out at
-    <a href="http://gulpjs.com">gulpjs.com</a>
-  </p>
-  <p>
-    <span class="user"></span>
-    <span class="twitter"></span>
-  </p>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-  <script src="./js/scripts.js"></script>
-  <script src="./js/secondary.js"></script>
-</body>
+  <body>
+    <div class="wrapper wrapper_page-error">
+      <section class="container-fluid">
+        <div class="container">
+          <!-- Counter -->
+          <div class="row counter_wrap">
+            <div class="col col-lg-12">
+              <div class="counter">
+                <ul class="counter_ul">
+                  <li class="counter_li col-6 col-md-2">
+                    <span class="counter_count animated infinite pulse delay-2s">30</span>
+                    <span class="counter_sub">Days</span>
+                  </li>
+                  <li class="counter_li col-6 col-md-2">
+                    <span class="counter_count animated infinite pulse delay-1s">15</span>
+                    <span class="counter_sub">Hours</span>
+                  </li>
+                  <li class="counter_li col-6 col-md-2">
+                    <span class="counter_count animated infinite pulse delay-3s">45</span>
+                    <span class="counter_sub">Minutes</span>
+                  </li>
+                  <li class="counter_li col-6 col-md-2">
+                    <span class="counter_count animated infinite pulse delay-2s">20</span>
+                    <span class="counter_sub">Seconds</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Title -->
+          <div class="row title_wrap">
+            <div class="col">
+              <div class="title">
+                <h1 class="title_h1 animated fadeInDown delay-.3s">COMING SOON</h1>
+                <h3 class="title_h3">
+                  Our website is under construction,
+                  <span class="badge badge-secondary animated fadeInDown delay-1s">follow us for update now!</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- feedback block -->
+          <div class="row">
+            <div class="col container">
+              <div class="feedback_wrap d-flex justify-content-center">
+                <form class="feedback_form">
+                  <div class="form-row align-items-center">
+                    <div class="col-auto">
+                      <label class="sr-only" for="inlineFormInput">Name</label>
+                      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+                    </div>
+                    <div class="col-auto">
+                      <label class="sr-only" for="inlineFormInputGroup">Имя пользователя</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">@</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup"
+                          placeholder="Имя пользователя">
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn bg-green mb-2">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer fixed-bottom">
+        <p>@ 2019 Coming Soon Template. Designed by Situator</p>
+      </footer>
+    </div>
+    </div>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script src="./js/secondary.js"></script>
+  </body>
 
 </html>

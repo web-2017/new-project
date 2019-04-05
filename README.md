@@ -7,7 +7,7 @@ For Live reloading, Browsersync has been used. For ES6 Transpilation, Babel has 
 ## Setup
 
 - Install [Node](https://nodejs.org/)
-- Optionally, also install [Yarn](https://yarnpkg.com/) or use *Npm* that comes with Node pre-installed
+- Optionally, also install [Yarn](https://yarnpkg.com/) or use _Npm_ that comes with Node pre-installed
 - Install Gulp globally through `npm install -g gulp@next`
 - Install Webpack globally through `npm install -g webpack`
 - Fork this project

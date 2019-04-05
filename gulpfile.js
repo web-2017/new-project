@@ -43,8 +43,15 @@ const supportedBrowsers = [
 ];
 
 // Config
-const autoprefixConfig = { browsers: supportedBrowsers, cascade: false };
-const babelConfig = { targets: { browsers: supportedBrowsers } };
+const autoprefixConfig = {
+  browsers: supportedBrowsers,
+  cascade: false
+};
+const babelConfig = {
+  targets: {
+    browsers: supportedBrowsers
+  }
+};
 
 // Paths for reuse
 const exportPath = './website/dist/**/*';
@@ -66,7 +73,7 @@ const distPath = (file, serve = false) => {
 
 /**
  * Cleaning Tasks
-*/
+ */
 
 // Clean Markup Task
 const cleanMarkup = (mode) => () => {
@@ -95,13 +102,15 @@ const cleanExport = (mode) => () => {
 
 /**
  * Building Tasks 
-*/
+ */
 
 // Build Markup Tasks
 const buildMarkup = (mode) => (done) => {
   ['development', 'production'].includes(mode) ? pump([
     gulp.src(srcPath('html')),
-    ...((mode === 'production') ? [gulpHtmlmin({ collapseWhitespace: true })] : []),
+    ...((mode === 'production') ? [gulpHtmlmin({
+      collapseWhitespace: true
+    })] : []),
     gulp.dest(distPath('html', true)),
   ], done) : undefined;
 };
@@ -132,13 +141,19 @@ const buildStyles = (mode) => (done) => {
 
   const postcssPlugins = [
     autoprefixer(autoprefixConfig),
-    postcssUncss({ html: [distPath('html')] }),
+    postcssUncss({
+      html: [distPath('html')]
+    }),
   ];
-  
+
   ['development', 'production'].includes(mode) ? pump([
     gulp.src(srcPath('scss')),
-    gulpSourcemaps.init({ loadMaps: true }),
-    gulpSass({ outputStyle }),
+    gulpSourcemaps.init({
+      loadMaps: true
+    }),
+    gulpSass({
+      outputStyle
+    }),
     gulpPostcss(postcssPlugins),
     gulpSourcemaps.write('./'),
     gulp.dest(distPath('css')),
@@ -157,13 +172,19 @@ const buildScripts = (mode) => (done) => {
     gulp.src(srcPath('js')),
     vinylNamed(),
     webpackStream(streamMode, webpack),
-    gulpSourcemaps.init({ loadMaps: true }),
+    gulpSourcemaps.init({
+      loadMaps: true
+    }),
     through2.obj(function (file, enc, cb) {
       const isSourceMap = /\.map$/.test(file.path);
       if (!isSourceMap) this.push(file);
       cb();
     }),
-    gulpBabel({ presets: [['env', babelConfig]] }),
+    gulpBabel({
+      presets: [
+        ['env', babelConfig]
+      ]
+    }),
     ...((mode === 'production') ? [gulpUglify()] : []),
     gulpSourcemaps.write('./'),
     gulp.dest(distPath('js')),
@@ -173,7 +194,7 @@ const buildScripts = (mode) => (done) => {
 
 /**
  * Generic Task for all Main Gulp Build/Export Tasks
-*/
+ */
 
 // Generic Task
 const genericTask = (mode, context = 'building') => {
@@ -193,50 +214,85 @@ const genericTask = (mode, context = 'building') => {
 
   // Combine all booting tasks into one array!
   const allBootingTasks = [
-    Object.assign(cleanMarkup(mode), { displayName: `Booting Markup Task: Clean - ${modeName}` }),
-    Object.assign(buildMarkup(mode), { displayName: `Booting Markup Task: Build - ${modeName}` }),
-    Object.assign(cleanImages(mode), { displayName: `Booting Images Task: Clean - ${modeName}` }),
-    Object.assign(buildImages(mode), { displayName: `Booting Images Task: Build - ${modeName}` }),
-    Object.assign(cleanStyles(mode), { displayName: `Booting Styles Task: Clean - ${modeName}` }),
-    Object.assign(buildStyles(mode), { displayName: `Booting Styles Task: Build - ${modeName}` }),
-    Object.assign(cleanScripts(mode), { displayName: `Booting Scripts Task: Clean - ${modeName}` }),
-    Object.assign(buildScripts(mode), { displayName: `Booting Scripts Task: Build - ${modeName}` }),
+    Object.assign(cleanMarkup(mode), {
+      displayName: `Booting Markup Task: Clean - ${modeName}`
+    }),
+    Object.assign(buildMarkup(mode), {
+      displayName: `Booting Markup Task: Build - ${modeName}`
+    }),
+    Object.assign(cleanImages(mode), {
+      displayName: `Booting Images Task: Clean - ${modeName}`
+    }),
+    Object.assign(buildImages(mode), {
+      displayName: `Booting Images Task: Build - ${modeName}`
+    }),
+    Object.assign(cleanStyles(mode), {
+      displayName: `Booting Styles Task: Clean - ${modeName}`
+    }),
+    Object.assign(buildStyles(mode), {
+      displayName: `Booting Styles Task: Build - ${modeName}`
+    }),
+    Object.assign(cleanScripts(mode), {
+      displayName: `Booting Scripts Task: Clean - ${modeName}`
+    }),
+    Object.assign(buildScripts(mode), {
+      displayName: `Booting Scripts Task: Build - ${modeName}`
+    }),
   ];
 
   // Browser Loading & Watching
   const browserLoadingWatching = (done) => {
-    browserSync.init({ port, server: distPath('html', true) });
+    browserSync.init({
+      port,
+      server: distPath('html', true)
+    });
 
     // Watch - Markup
     gulp.watch(srcPath('html'), true)
       .on('all', gulp.series(
-        Object.assign(cleanMarkup(mode), { displayName: `Watching Markup Task: Clean - ${modeName}` }),
-        Object.assign(buildMarkup(mode), { displayName: `Watching Markup Task: Build - ${modeName}` }),
+        Object.assign(cleanMarkup(mode), {
+          displayName: `Watching Markup Task: Clean - ${modeName}`
+        }),
+        Object.assign(buildMarkup(mode), {
+          displayName: `Watching Markup Task: Build - ${modeName}`
+        }),
       ), browserSync.reload);
     done();
 
     // Watch - Images
     gulp.watch(srcPath('img', true))
       .on('all', gulp.series(
-        Object.assign(cleanImages(mode), { displayName: `Watching Images Task: Clean - ${modeName}` }),
-        Object.assign(buildImages(mode), { displayName: `Watching Images Task: Build - ${modeName}` }),
+        Object.assign(cleanImages(mode), {
+          displayName: `Watching Images Task: Clean - ${modeName}`
+        }),
+        Object.assign(buildImages(mode), {
+          displayName: `Watching Images Task: Build - ${modeName}`
+        }),
       ), browserSync.reload);
 
     // Watch - Styles
     gulp.watch(srcPath('scss', true))
       .on('all', gulp.series(
-        Object.assign(cleanStyles(mode), { displayName: `Watching Styles Task: Clean - ${modeName}` }),
-        Object.assign(buildStyles(mode), { displayName: `Watching Styles Task: Build - ${modeName}` }),
+        Object.assign(cleanStyles(mode), {
+          displayName: `Watching Styles Task: Clean - ${modeName}`
+        }),
+        Object.assign(buildStyles(mode), {
+          displayName: `Watching Styles Task: Build - ${modeName}`
+        }),
       ), browserSync.reload);
 
     // Watch - Scripts
     gulp.watch(srcPath('js', true))
       .on('all', gulp.series(
-        Object.assign(cleanScripts(mode), { displayName: `Watching Scripts Task: Clean - ${modeName}` }),
-        Object.assign(buildScripts(mode), { displayName: `Watching Scripts Task: Build - ${modeName}` }),
+        Object.assign(cleanScripts(mode), {
+          displayName: `Watching Scripts Task: Clean - ${modeName}`
+        }),
+        Object.assign(buildScripts(mode), {
+          displayName: `Watching Scripts Task: Build - ${modeName}`
+        }),
       ), browserSync.reload);
   };
-  
+
   // Exporting Zip
   const exportingZip = (done) => {
     pump([
@@ -250,16 +306,20 @@ const genericTask = (mode, context = 'building') => {
   if (context === 'building') {
     return [
       ...allBootingTasks,
-      Object.assign(browserLoadingWatching, { displayName: `Browser Loading & Watching Task - ${modeName}` }),
+      Object.assign(browserLoadingWatching, {
+        displayName: `Browser Loading & Watching Task - ${modeName}`
+      }),
     ];
   }
-  
+
   // Returning Tasks based on Exporting Context 
   if (context === 'exporting') {
     return [
-      cleanExport(mode), 
+      cleanExport(mode),
       ...allBootingTasks,
-      Object.assign(exportingZip, { displayName: `Exporting Zip Task - ${modeName}` }),
+      Object.assign(exportingZip, {
+        displayName: `Exporting Zip Task - ${modeName}`
+      }),
     ];
   }
 
@@ -269,7 +329,7 @@ const genericTask = (mode, context = 'building') => {
 
 /**
  * Main Gulp Build/Export Tasks that are inserted within `package.json`
-*/
+ */
 
 // Default (`npm start` or `yarn start`) => Production
 gulp.task('default', gulp.series(...genericTask('production', 'building')));
