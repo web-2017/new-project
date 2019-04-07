@@ -110,9 +110,9 @@ const cleanExport = (mode) => () => {
 const buildMarkup = (mode) => (done) => {
   ['development', 'production'].includes(mode) ? pump([
     gulp.src(srcPath('html')),
-    ...((mode === 'production') ? [/* gulpHtmlmin({
+    ...((mode === 'production') ? [gulpHtmlmin({
       collapseWhitespace: true
-    }) */] : []),
+    })] : []),
     gulp.dest(distPath('html', true)),
   ], done) : undefined;
 };

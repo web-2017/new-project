@@ -1,8 +1,12 @@
-.wrapper_page-error {
+.wrapper_page-coming {
   min-height: 100vh;
   overflow: hidden;
-  background: url('../../img/bg/bg.png') center center no-repeat;
+  background: url('../../img/bg/bg_1.png') center center no-repeat;
   background-size: cover;
+}
+
+#getting-started {
+  line-height: 21px;
 }
 
 .counter {
@@ -29,7 +33,7 @@
     display: inline-block;
     font-size: 1.7em;
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 18px 10px;
     text-align: center;
     box-sizing: border-box;
     background: #ffffff;
@@ -115,7 +119,14 @@
     }
 
     .col-auto,
-    .bg-green {
+    .bg_1,
+    .bg_2,
+    .bg_3,
+    .bg_4,
+    .bg_5,
+    .bg_6,
+    .bg_7,
+    .bg_8 {
       @include for-phone-only {
         width: 100%;
       }
@@ -142,8 +153,37 @@
   color: $green;
 }
 
-.bg-green {
+.bg_1,
+.bg_2,
+.bg_3,
+.bg_4,
+.bg_5,
+.bg_6,
+.bg_7,
+.bg_8 {
   background: $green;
   color: #fff;
   outline: none;
+}
+
+.bg_2 {
+  background: #449e32;
+}
+.bg_3 {  
+  background: #552277;
+}
+.bg_4 { 
+  background: #f97202;
+}
+.bg_5 { 
+  background: #005be9;
+}
+.bg_6 { 
+  background: #731553;
+}
+.bg_7 { 
+  background: #710632;
+}
+.bg_8 { 
+  background: #d31b59;
 }
