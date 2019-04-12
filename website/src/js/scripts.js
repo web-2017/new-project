@@ -8,7 +8,6 @@ $(document).ready(function () {
   let theme = $("body").attr("data-theme");
   let needForm = $("body").attr("data-needForm");
   let needCounter = $("body").attr("data-needCounter");
-
   if (theme != "") {
     $(".wrapper_page-coming").css("backgroundImage", "url('/img/bg/bg_" + theme + ".png')");
     $("button").removeClass("bg_1").addClass("bg_" + theme);

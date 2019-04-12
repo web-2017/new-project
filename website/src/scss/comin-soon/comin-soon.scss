@@ -3,7 +3,6 @@
   overflow: hidden;
   background: url('../../img/bg/bg_1.png') center center no-repeat;
   background-size: cover;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +14,7 @@
 
 .counter {
 
-  &_wrap {
+  &_wrap { 
     position: fixed;
     top: 0;
     left: 50%;
