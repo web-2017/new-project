@@ -3,6 +3,10 @@
   overflow: hidden;
   background: url('../../img/bg/bg_1.png') center center no-repeat;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #getting-started {
@@ -12,7 +16,10 @@
 .counter {
 
   &_wrap {
-    margin-bottom: 140px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
 
