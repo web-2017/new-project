@@ -225,9 +225,9 @@ const genericTask = (mode, context = 'building') => {
     Object.assign(cleanImages(mode), {
       displayName: `Booting Images Task: Clean - ${modeName}`
     }),
-    Object.assign(buildImages(mode), {
+    /* Object.assign(buildImages(mode), {
       displayName: `Booting Images Task: Build - ${modeName}`
-    }),
+    }), */
     Object.assign(cleanStyles(mode), {
       displayName: `Booting Styles Task: Clean - ${modeName}`
     }),
