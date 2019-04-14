@@ -4,6 +4,12 @@ import { setTimeout } from 'timers';
 primary();
 
 // Preloader
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    $('#preloader').fadeOut('slow', function () { });
+  }, 2000);
+});
+
 $(document).ready(function () {
   let theme = $("body").attr("data-theme");
   let needForm = $("body").attr("data-needForm");
@@ -18,12 +24,6 @@ $(document).ready(function () {
   if (needForm == "0") {
     $(".feedback_form").hide();
   }
-
-  $(window).on('load', function () {
-    setTimeout(function () {
-      $('#preloader').fadeOut('slow', function () { });
-    }, 2000);
-  });
 
   $(".feedback_form").submit(function (e) {
     e.preventDefault();
